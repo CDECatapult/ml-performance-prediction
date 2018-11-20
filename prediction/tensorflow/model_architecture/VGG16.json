@@ -1,0 +1,179 @@
+{
+    "layers": {
+        "conv1_1": {
+            "matsize": 224,
+            "kernelsize": 3,
+            "channels_in": 3,
+            "channels_out": 64,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "conv1_2": {
+            "matsize": 224,
+            "kernelsize": 3,
+            "channels_in": 64,
+            "channels_out": 64,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "conv2_1": {
+            "matsize": 112,
+            "kernelsize": 3,
+            "channels_in": 64,
+            "channels_out": 128,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "conv2_2": {
+            "matsize": 112,
+            "kernelsize": 3,
+            "channels_in": 128,
+            "channels_out": 128,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "conv3_1": {
+            "matsize": 56,
+            "kernelsize": 3,
+            "channels_in": 128,
+            "channels_out": 256,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "conv3_2": {
+            "matsize": 56,
+            "kernelsize": 3,
+            "channels_in": 256,
+            "channels_out": 256,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "conv3_3": {
+            "matsize": 56,
+            "kernelsize": 3,
+            "channels_in": 256,
+            "channels_out": 256,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "conv4_1": {
+            "matsize": 28,
+            "kernelsize": 3,
+            "channels_in": 256,
+            "channels_out": 512,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "conv4_2": {
+            "matsize": 28,
+            "kernelsize": 3,
+            "channels_in": 512,
+            "channels_out": 512,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "conv4_3": {
+            "matsize": 28,
+            "kernelsize": 3,
+            "channels_in": 512,
+            "channels_out": 512,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "conv5_1": {
+            "matsize": 14,
+            "kernelsize": 3,
+            "channels_in": 512,
+            "channels_out": 512,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "conv5_2": {
+            "matsize": 14,
+            "kernelsize": 3,
+            "channels_in": 512,
+            "channels_out": 512,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "conv5_3": {
+            "matsize": 14,
+            "kernelsize": 3,
+            "channels_in": 512,
+            "channels_out": 512,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "fc6": {
+            "matsize": 7,
+            "kernelsize": 7,
+            "channels_in": 512,
+            "channels_out": 4096,
+            "padding": "VALID",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "fc7": {
+            "matsize": 1,
+            "kernelsize": 1,
+            "channels_in": 4096,
+            "channels_out": 4096,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "relu"
+        },
+
+        "fc8": {
+            "matsize": 1,
+            "kernelsize": 1,
+            "channels_in": 4096,
+            "channels_out": 1000,
+            "padding": "SAME",
+            "strides": 1,
+            "use_bias": 1,
+            "activation": "none"
+        }
+    }
+}
