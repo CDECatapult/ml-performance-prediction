@@ -22,6 +22,9 @@ def predict_walltime(model,
         bandwidth: GPU memory bandwidth in GB/s (int)
         cores: Number ofGPU cores (int)
         clock: GPU clock frequency in MHz (int)
+    Returns:
+        layer_name
+        layer_prediction: Predicted execution time of layer_name
     """
 
     with tf.Session() as sess:

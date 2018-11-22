@@ -8,6 +8,8 @@ def new_model(input_dimension,input_size):
     Args:
         input_dimension:
         input_size:
+    Returns:
+        m: instance of class model
     """
     m = model()
     m['layers'] = {}
@@ -18,7 +20,9 @@ def new_model(input_dimension,input_size):
 
 
 def import_model(path):
-    """Import model from path"""
+    """Import model from path
+    Returns:
+        m: instance of class model"""
     m = model()
     with open(path) as json_data:
         tmpdict = json.load(json_data)
