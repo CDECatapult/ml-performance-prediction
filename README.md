@@ -5,4 +5,6 @@ This is intended as starting point for an open source machine learning tool, cap
 
 The folder *models* contains code for benchmarking deep neural networks as well as single layers within these.
 
-The folder *prediction* contains code to generate training data for the model described in the above paper, a data preparation pipeline, and the model itself. This folder also contains the training data and the existing tensorflow models.
+The folder *build prediction_model* contains code to generate training data for the model described in the above paper, a data preparation pipeline, and the model training procedures. This folder also contains the training data and the existing tensorflow models.
+
+The folder *prediction* contains the trained models and tools to infer the execution time of arbitrary models on GPUs.
