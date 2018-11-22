@@ -136,6 +136,10 @@ class model(dict):
             batchsize, default 1
             model_file, default 'models/all/saved_model',
             scaler_file, default 'models/all/scaler_Conv.save'
+        Returns:
+            total execution time
+            layer names
+            layer execution times 
         """
 
         scaler = joblib.load(scaler_file)
@@ -147,4 +151,4 @@ class model(dict):
                 self, model_file, scaler, batchsize, optimizer,
                 gpu['bandwidth'], gpu['cores'], gpu['clock'])
 
-        return layer, time
+        return sum(time), layer, time
