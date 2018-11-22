@@ -1,0 +1,10 @@
+FROM tensorflow/tensorflow:1.10.1-gpu
+
+COPY . /model
+WORKDIR /model
+
+ENTRYPOINT ["python", \
+            "benchmark.py", \
+            "--testDense", \
+            "--num_val=25000", \
+            "--num_gpu=1"]

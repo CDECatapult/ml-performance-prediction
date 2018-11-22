@@ -108,6 +108,7 @@ ENV/
 *.log
 *.synctex.gz
 
-graphs
-src/prediction/tensorflow/checkpoints/
-src/prediction/tensorflow/graphs/
+build_prediction_model/checkpoints/
+build_prediction_model/graphs/
+build_prediction_model/figures/*
+prediction/figures/*
