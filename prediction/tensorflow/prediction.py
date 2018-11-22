@@ -12,6 +12,17 @@ def predict_walltime(model,
                      bandwidth,
                      cores,
                      clock):
+    """Predicts execution time of deep neuronal network on some hardware
+    Args:
+        model: Deep neural network architecture, instance of the model class
+        model_file: tensorflow model
+        sklearn: skleran scaler
+        batchsize (int)
+        optimizer (string)
+        bandwidth: GPU memory bandwidth in GB/s (int)
+        cores: Number ofGPU cores (int)
+        clock: GPU clock frequency in MHz (int)
+    """
 
     with tf.Session() as sess:
         tf.saved_model.loader.load(sess, ["serve"], model_file)
@@ -82,10 +93,6 @@ def get_input_features(dictionary,scaler,batchsize,optimizer,bandwidth,cores,clo
                          (1 if dictionary['activation'].lower()=='relu' else 0),
                          (1 if dictionary['activation'].lower()=='tanh' else 0),
                          (1 if dictionary['activation'].lower()=='sigmoid' else 0),
-                         # ops,
-                         # memory_weights,
-                         # memory_in,
-                         # memory_out,
                          bandwidth,
                          cores,
                          clock

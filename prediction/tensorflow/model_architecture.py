@@ -4,6 +4,11 @@ from sklearn.externals import joblib
 
 
 def new_model(input_dimension,input_size):
+    """Creates new model
+    Args:
+        input_dimension:
+        input_size:
+    """
     m = model()
     m['layers'] = {}
     m['input'] = {}
@@ -13,6 +18,7 @@ def new_model(input_dimension,input_size):
 
 
 def import_model(path):
+    """Import model from path"""
     m = model()
     with open(path) as json_data:
         tmpdict = json.load(json_data)
@@ -20,14 +26,18 @@ def import_model(path):
     m['input'] = tmpdict['input']
     return m
 
+
 class model(dict):
+    """Class for model"""
 
     def save(self,path):
+        """Save model to path"""
         with open(path, 'w') as json_file:
             json.dump(self, json_file, indent=4)
 
 
     def describe(self):
+        """Prints a description of of the class instance"""
         print('%d layer network\n' %(len(self['layers'])))
         print('Input size %dx%dx%d\n'
               %(self['input']['size'],self['input']['size'],
@@ -42,6 +52,25 @@ class model(dict):
 
 
     def add_layer(self,layer_type,layer_name,**kwargs):
+        """Adds a layer to the class instance
+        Args:
+            layer_type: Type of layer ('Convolution','Fully_connected' or 'Max_pool')
+            layer_name: Name of layer (string)
+        Layer type specific args:
+            Convolution:
+                kernelsize
+                channels_out
+                padding
+                strides
+                use_bias
+                activation
+            Max_pool:
+                pool_size
+                strides
+                padding
+            Fully_connected:
+        """
+
         num_layers = len(self['layers'])
         if num_layers==0:
             input_dimension = self['input']['dimension']
@@ -55,7 +84,7 @@ class model(dict):
         self['layers'][num_layers+1]['name'] = layer_name
         self['layers'][num_layers+1]['type'] = layer_type
 
-        if layer_type=='Convolution':
+        if layer_type.lower()=='convolution':
             padding_reduction = ((kwargs['padding'].lower()=='valid')*(kwargs['kernelsize']-1))
             output_size = ((input_size - padding_reduction)/kwargs['strides'])
 
@@ -69,7 +98,7 @@ class model(dict):
             self['layers'][num_layers+1]['activation'] = kwargs['activation']
             self['layers'][num_layers+1]['output_size'] = output_size
 
-        if layer_type=='Max_pool':
+        if layer_type.lower()=='max_pool':
             padding_reduction = ((kwargs['padding'].lower()=='valid')*(kwargs['pool_size']-1))
             output_size = ((input_size - padding_reduction)/kwargs['strides'])
 
@@ -84,7 +113,8 @@ class model(dict):
                 self['layers'][num_layers+1]['channels_out']))
 
 
-    def remove_top_layer(self):
+    def remove_last_layer(self):
+        """Removes last layer of class instance"""
         num_layers = len(self['layers'])
         if num_layers>0:
             del self['layers'][num_layers]
@@ -96,6 +126,13 @@ class model(dict):
                 batchsize=1,
                 model_file='models/all/saved_model',
                 scaler_file='models/all/scaler_Conv.save'):
+        """Predicts execution time of class instance
+        Args:
+            gpu_def: json file with GPU definition
+            batchsize, default 1
+            model_file, default 'models/all/saved_model',
+            scaler_file, default 'models/all/scaler_Conv.save'
+        """
 
         scaler = joblib.load(scaler_file)
 
