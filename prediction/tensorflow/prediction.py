@@ -4,43 +4,38 @@ import numpy as np
 from sklearn.externals import joblib
 
 
-def predict_walltime(model_file,
-                     tfmodel_file,
-                     scaler_file,
+def predict_walltime(model,
+                     model_file,
+                     scaler,
                      batchsize,
                      optimizer,
                      bandwidth,
                      cores,
                      clock):
 
-    with open(model_file) as json_data:
-        model = json.load(json_data)
-        json_data.close()
-
-    scaler = joblib.load(scaler_file)
-
     with tf.Session() as sess:
-        tf.saved_model.loader.load(sess, ["serve"], tfmodel_file)
+        tf.saved_model.loader.load(sess, ["serve"], model_file)
         graph = tf.get_default_graph()
 
         layer_prediction = []
         layer_name = []
 
         for layer in model['layers']:
-            features = get_input_features(model['layers'][layer],
-                                          scaler,
-                                          batchsize,
-                                          optimizer,
-                                          bandwidth,
-                                          cores,
-                                          clock)
+            if model['layers'][layer]['type']=='Convolution':
+                features = get_input_features(model['layers'][layer],
+                                              scaler,
+                                              batchsize,
+                                              optimizer,
+                                              bandwidth,
+                                              cores,
+                                              clock)
 
-            run = sess.run(
-                    'model_prediction:0',
-                    feed_dict={'model_input:0': features,
-                               'model_istraining:0': False})
-            layer_prediction.append(run[0])
-            layer_name.append(layer)
+                run = sess.run(
+                        'model_prediction:0',
+                        feed_dict={'model_input:0': features,
+                                   'model_istraining:0': False})
+                layer_prediction.append(run[0])
+                layer_name.append(model['layers'][layer]['name'])
 
     return layer_name, layer_prediction
 
