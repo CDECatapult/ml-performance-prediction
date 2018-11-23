@@ -1,0 +1,6 @@
+model_checkpoint_path: "prediction-299"
+all_model_checkpoint_paths: "prediction-295"
+all_model_checkpoint_paths: "prediction-296"
+all_model_checkpoint_paths: "prediction-297"
+all_model_checkpoint_paths: "prediction-298"
+all_model_checkpoint_paths: "prediction-299"
