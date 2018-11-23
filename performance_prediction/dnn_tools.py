@@ -1,5 +1,5 @@
 import json
-import prediction
+from  .dnn_prediction import predict_walltime
 from sklearn.externals import joblib
 
 
@@ -147,7 +147,7 @@ class dnn(dict):
         with open(gpu_def) as json_data:
             gpu = json.load(json_data)
 
-        layer,time = prediction.predict_walltime(
+        layer,time = predict_walltime(
                 self, model_file, scaler, batchsize, optimizer,
                 gpu['bandwidth'], gpu['cores'], gpu['clock'])
 
