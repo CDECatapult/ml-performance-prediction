@@ -110,5 +110,5 @@ ENV/
 
 notebooks/checkpoints/*
 notebooks/graphs/*
-build_prediction_model/figures/*
+prediction_model/figures/*
 prediction/figures/*
