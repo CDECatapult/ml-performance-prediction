@@ -108,8 +108,7 @@ ENV/
 *.log
 *.synctex.gz
 
-notebooks/checkpoints/*
-notebooks/graphs/*
+prediction_model/notebooks/checkpoints/*
+prediction_model/notebooks/graphs/*
 prediction_model/figures/*
-prediction/figures/*
 prediction_model/models/*
