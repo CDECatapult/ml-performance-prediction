@@ -112,3 +112,4 @@ notebooks/checkpoints/*
 notebooks/graphs/*
 prediction_model/figures/*
 prediction/figures/*
+prediction_model/models/*
